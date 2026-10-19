@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+body {
+  @apply bg-slate-950;
+}
+
+body nav {
+  @apply fixed w-full border-3 border-slate-800;
+}
+
+nav > div {
+  @apply flex justify-between items-center p-2;
+}
+
+nav img {
+  @apply w-12 h-12;
+}
+
+nav .brand-label {
+  @apply font-mono text-white text-2xl;
+}
+
+nav .brand-name {
+  @apply font-serif text-white text-2xl;
+}
+
+nav > div > div:last-child {
+  @apply justify-end rounded-md flex gap-4 w-full p-2;
+}
+
+nav ul {
+  @apply flex gap-4 py-[4px] text-white rounded-md;
+}
