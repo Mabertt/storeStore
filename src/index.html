@@ -5,10 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/output.css" />
     <link rel="icon" type="image/svg" href="/src/img/StoreLogo.svg" />
+    <script src="./js/redirect-live-server.js"></script>
     <title>Bro bro yo</title>
   </head>
   <body>
     <store-navbar></store-navbar>
     <script type="module" src="./components/Navbar.js"></script>
+    <main
+      class="relative flex min-h-screen flex-col items-center justify-center"
+    >
+      <div class="text-center slide-up">
+        <p
+          class="py-1 bg-linear-[135deg] from-grey-300 to-slate-400 bg-clip-text text-4xl leading-normal font-bold text-transparent"
+        >
+          Style with<br />
+        </p>
+        <p
+          class="py-1 bg-gradient-to-r from-sky-300 to-blue-400 bg-clip-text text-center text-4xl leading-normal font-bold text-transparent"
+        >
+          store.
+        </p>
+      </div>
+      <form
+        class="w-[300px] justify-content flex-col action-form border-sky-800 border-2 rounded-md p-4 opacity-0 transition-opacity duration-500"
+        aria-label="Store actions"
+      >
+        <button
+          class="rounded-md bg-slate-800 px-2 py-1 text-slate-700 hover:text-slate-500 hover:bg-slate-700"
+          type="button"
+        >
+          Surf as a guest
+        </button>
+        <a
+          class="login-button inline-flex h-10 items-center justify-center rounded-md px-4 py-2 text-white"
+          href="./pages/Login.html"
+        >
+          Log in
+        </a>
+      </form>
+    </main>
+    <script>
+      const intro = document.querySelector(".slide-up");
+      const actionForm = document.querySelector(".action-form");
+
+      intro.addEventListener("animationend", (event) => {
+        if (event.animationName === "slide-up") {
+          actionForm.classList.add("is-visible");
+        }
+      });
+    </script>
   </body>
 </html>

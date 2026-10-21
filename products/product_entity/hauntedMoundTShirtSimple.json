@@ -1,0 +1,11 @@
+{
+  "name": "Haunted Mound T-Shirt",
+  "price": 4.99,
+  "description": "78% polyester, original merch, halloween",
+  "tags": ["T-Shirt", "Spooky", "Merch"],
+  "sizes": ["M", "S", "L"],
+  "color": ["Black"],
+  "colorClass": ["bg-black"],
+  "imageLink": "../product_image/e040c4eeb9471e9187b4e603381a9865af58c8ed_original.jpeg",
+  "type": "T-Shirt"
+}

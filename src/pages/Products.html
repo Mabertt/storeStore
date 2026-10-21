@@ -4,10 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/output.css" />
+    <script src="../js/redirect-live-server.js"></script>
     <title>Products</title>
   </head>
   <body>
     <store-navbar></store-navbar>
     <script type="module" src="../components/Navbar.js"></script>
+    <main class="products-page">
+      <h1 class="products-heading"></h1>
+      <p class="products-status" data-products-status aria-live="polite">
+        Loading products...
+      </p>
+      <section
+        class="products-grid"
+        data-products-grid
+        aria-label="Available products"
+      ></section>
+    </main>
+    <script type="module" src="../js/products.js"></script>
   </body>
 </html>

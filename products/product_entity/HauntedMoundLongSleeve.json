@@ -1,0 +1,11 @@
+{
+  "name": "Haunted Mound Long Sleeve",
+  "price": 7.99,
+  "description": "90% cotton, original merch, haunted mound",
+  "tags": ["Long Sleeve", "Spooky", "Merch"],
+  "sizes": ["M", "S", "L"],
+  "color": ["Black", "Orange"],
+  "colorClass": ["bg-black", "bg-orange-500"],
+  "imageLink": "../product_image/S1f39e62a87064675a17c1375fe7fd8ed2.avif",
+  "type": "Long Sleeve"
+}

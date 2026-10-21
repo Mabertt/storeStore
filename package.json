@@ -1,10 +1,12 @@
 {
+  "type": "module",
   "scripts": {
     "build:css": "tailwindcss -i ./src/css/style.css -o ./src/css/output.css",
-    "watch:css": "tailwindcss -i ./src/css/style.css -o ./src/css/output.css --watch"
+    "watch:css": "tailwindcss -i ./src/css/style.css -o ./src/css/output.css --watch",
+    "start": "node server.js"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.3.3",
-    "tailwind": "^4.0.0"
+    "tailwindcss": "^4.3.3"
   }
 }

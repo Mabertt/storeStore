@@ -4,10 +4,109 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/output.css" />
+    <script src="../js/redirect-live-server.js"></script>
     <title>Document</title>
   </head>
   <body>
     <store-navbar></store-navbar>
     <script type="module" src="../components/Navbar.js"></script>
+    <main class="flex min-h-screen items-center justify-start px-8">
+      <form
+        class="ml-[200px] flex h-[300px] w-[500px] flex-col items-center justify-center rounded-md border-2 border-sky-800 p-4"
+      >
+        <div class="relative flex w-full flex-col gap-3">
+          <label class="flex flex-col gap-1 text-white">
+            Login
+            <input
+              class="rounded-md border border-sky-800 bg-slate-950 px-3 py-2 text-white transition-colors hover:border-sky-500"
+              type="text"
+              name="login"
+              autocomplete="username"
+            />
+          </label>
+          <label class="flex flex-col gap-1 text-white">
+            Password
+            <span class="relative">
+              <input
+                class="w-full rounded-md border border-sky-800 bg-slate-950 px-3 py-2 pr-16 text-white transition-colors hover:border-sky-500"
+                type="password"
+                name="password"
+                autocomplete="current-password"
+              />
+              <label
+                class="absolute top-1/2 right-3 flex -translate-y-1/2 items-center gap-1 text-sm text-slate-300"
+              >
+                <input
+                  class="accent-sky-500"
+                  type="checkbox"
+                  aria-label="Show password"
+                  data-show-password
+                />
+                Show
+              </label>
+            </span>
+          </label>
+          <button
+            class="w-full rounded-md bg-sky-700 px-3 py-2 text-white transition-colors hover:bg-sky-600"
+            type="submit"
+          >
+            Log in
+          </button>
+          <p
+            class="absolute top-full left-0 w-full text-center text-red-400 opacity-0 transition-opacity duration-[2000ms]"
+            aria-live="polite"
+          ></p>
+        </div>
+      </form>
+    </main>
+    <script type="module">
+      import { authenticateUser } from "../js/loginservice.js";
+
+      const loginForm = document.querySelector("form");
+      const validationMessage = loginForm.querySelector("p");
+      const passwordInput = loginForm.elements.namedItem("password");
+      const showPasswordCheckbox = loginForm.querySelector(
+        "[data-show-password]",
+      );
+
+      showPasswordCheckbox.addEventListener("change", () => {
+        passwordInput.type = showPasswordCheckbox.checked ? "text" : "password";
+      });
+
+      loginForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const login = loginForm.elements.namedItem("login").value.trim();
+        const password = loginForm.elements.namedItem("password").value;
+
+        if (!login || !password) {
+          validationMessage.textContent = "Fill up all fields";
+          validationMessage.classList.add("opacity-100");
+          return;
+        }
+
+        try {
+          const user = await authenticateUser(login, password);
+
+          if (!user) {
+            validationMessage.textContent = "Invalid login or password";
+            validationMessage.classList.add("opacity-100");
+            return;
+          }
+
+          localStorage.setItem("authenticatedUser", user.login);
+          window.location.assign("./Products.html");
+        } catch (error) {
+          console.error("Login failed:", error);
+          validationMessage.textContent =
+            "Unable to load users. Please try again later.";
+          validationMessage.classList.add("opacity-100");
+        }
+      });
+
+      loginForm.addEventListener("input", () => {
+        validationMessage.textContent = "";
+        validationMessage.classList.remove("opacity-100");
+      });
+    </script>
   </body>
 </html>
